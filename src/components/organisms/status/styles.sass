@@ -1,0 +1,34 @@
+#status-page
+  width: 70vw
+  display: block
+  margin: 35px auto 0
+  height: auto
+  overflow: visible
+  #columns-hidden
+    display: none
+  #wrapper
+    & > .ui.segment 
+      border: none
+      box-shadow: none
+    .plus
+      display: none
+    &.minimised
+      height: 80px
+      overflow: hidden
+      .minus
+        display: none
+      .plus
+        display: block
+    #category
+      text-align: center
+      padding-top: 15px
+      width: 100%
+      cursor: pointer
+      transition: all 0.15s ease
+      &:hover
+        color: green
+      h3
+        display: inline
+      i
+        float: right
+        margin-right: 50px  

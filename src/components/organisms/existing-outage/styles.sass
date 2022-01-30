@@ -1,0 +1,112 @@
+#existing-outage
+  width: 85vw
+  display: block
+  margin: 35px auto 0
+  height: auto
+  overflow: visible
+  padding: 35px 0
+  & > .ui.segment
+    padding: 1em 0em
+  #new-outage
+    width: 100%
+  #oa-wrapper
+    width: 100%
+    margin: 0 auto
+    padding-top: 35px
+    & > .ui.vertical.segment 
+      justify-content: center
+      align-items: flex-start
+      & > .ui.floated.segment 
+        border-top: 1px solid rgba(34,36,38,.15)
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+        box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%)
+  h2
+    text-align: center
+  .align
+    width: 95%
+    margin: 0 0 0 2.5%
+    &.update
+      margin-top: 25px
+    input, .input
+      width: 100%
+    &.inline
+      display: flex
+      justify-content: space-between
+      align-items: center
+      h3
+        padding-top: 13px
+      & > div
+        width: 50%
+  #time
+    height: 50px
+    overflow: hidden
+    padding: 25px 0 0 2.5% 
+    width: 97.5% 
+    & > h3
+      cursor: pointer
+      text-align: left
+      transition: all 0.15s ease
+      i 
+        float: right
+      &:hover
+        color: green
+    &.opened
+        height: auto
+  #oa
+    height: 50px
+    overflow: hidden
+    transition: all 0.35s ease
+    & > .align > h3
+      cursor: pointer  
+      transition: all 0.15s ease
+      &:hover
+        color: green
+      i 
+        float: right
+    &.opened
+      height: auto
+      overflow: visible
+  .ui.menu
+    margin: 0 0 -3px 0
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+    background: transparent
+    border: none
+    box-shadow: none
+    &:after
+      display: none
+    &:before
+      display: none
+    & > a
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
+      padding-bottom: 15px
+      &:after
+        display: none
+      &:before
+        display: none
+    & > a.active
+      background-color: white
+      border: 1px solid rgba(34,36,38,.15)
+      border-bottom: none
+  .ui.segment
+    border-top: 0
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+  .segment
+    &.vertical  
+      display: flex
+      justify-content: space-around
+      align-items: center
+      border-bottom: none
+      margin: 10px auto
+      & > div
+        width: 45%
+      &#buttons
+        justify-content: center
+        div.spacer
+          width: 50px
+          height: 50px
+    .disabled
+      opacity: 0.8

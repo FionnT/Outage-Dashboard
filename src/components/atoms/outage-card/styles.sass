@@ -1,0 +1,31 @@
+#columns
+  width: 100%
+  display: flex
+  &.actionable
+    cursor: pointer
+    padding: 15px 0 
+    transition: all  0.15s 
+    border-bottom: 1px solid lightgrey
+    &:hover
+      color: green
+      -webkit-box-shadow: 1px 0px 8px -4px rgba(0,0,0,0.52)
+      box-shadow: 1px 0px 8px -4px rgba(0,0,0,0.52)
+  p
+    text-align: center
+    display: block
+  .desc 
+    display: none
+  .ref
+    width: 5%
+    height: 25px
+  .status
+    width: 10%
+  .severity
+    width: 10%
+  .title
+    width: auto
+    min-width: 35%
+  .start
+    width: 20%
+  .end
+    width: 20%

@@ -1,0 +1,121 @@
+head
+	meta(charset='utf-8')
+	title="System Alert: " + severity + " | " + title
+body
+	.innards(style='overflow: hidden; width: 600px; padding-top: 9px; padding-right: 0px; padding-bottom: 9px; padding-left: 0px; font-family: Helvetica')
+		#header(style='height: 74px; width: 100%; margin-bottom: 18px; overflow: hidden')
+			if status === "Resolved"
+				#green.banner(style='background-color: #339900; color: #ffffff; width: 100%; text-align: center; margin-bottom: 18px; padding-bottom: 5px')
+					h1#majorHeading(style='font-size: 26px; margin-top: .125em; margin-bottom: .125em; margin-left: 0em; margin-right: 0em') SYSTEM ALERT
+					h1(id="minorHeading" style="font-size: 24px; margin-top: .125em; margin-bottom: .125em; padding-bottom: 5px; margin-left: 0em; margin-right: 0em")=status
+			else if status === "Stable"
+				#yellow.banner(style='background-color: #FFD700; color: #000000; width: 100%;text-align:center;margin-bottom: 18px; padding-bottom: 5px')
+					h1#majorHeading(style='font-size: 26px; margin-top: .125em; margin-bottom: .125em; margin-left: 0em; margin-right: 0em') SYSTEM ALERT
+					h1(id="minorHeading" style="font-size: 24px; margin-top: .125em; margin-bottom: .125em; padding-bottom: 5px; margin-left: 0em; margin-right: 0em")=status
+			//- This is verbose on purpose, a simply else statement was resulting in double headers on some specific email platforms, idk why
+			else if status != "Resolved" && status != "Stable" 
+				#red.banner(style='background-color: #B80000; color: #ffffff; width: 100%; text-align: center; margin-bottom: 18px; padding-bottom: 5px')
+					h1#majorHeading(style='font-size: 26px; margin-top: .125em; margin-bottom: .125em; margin-left: 0em; margin-right: 0em') SYSTEM ALERT
+					h1(id="minorHeading" style="font-size: 24px; margin-top: .125em; margin-bottom: .125em; padding-bottom: 5px; margin-left: 0em; margin-right: 0em")=status
+		#impact(style='overflow: hidden')
+			if subcategories.length
+				#left(style='overflow: hidden; float:left; width: 50%; text-align: left; overflow: hidden')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Services Impacted :
+						li(style='margin-bottom:0px;list-style-type: none;margin-left:0')
+							p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=subcategories
+			if regions.length
+				#right(style='overflow: hidden; float:right; width: 50%; text-align: left; overflow: hidden')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Regions Impacted:
+						li(style='margin-bottom:4px;list-style-type: none;margin-left:0')
+							p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=regions
+			if sites.length
+				#right(style='overflow: hidden; float:right; width: 50%; text-align: left; overflow: hidden')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Sites Impacted:
+						li(style='margin-bottom:4px;list-style-type: none;margin-left:0')
+							p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=sites
+			if skills.length
+				#left(style='overflow: hidden; float:left; width: 50%; text-align: left; overflow: hidden')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Skills Impacted :
+						li(style='margin-bottom:0px;list-style-type: none;margin-left:0')
+							p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=skills
+			if agents_impacted && agents_total
+				#right(style='overflow: hidden; float:right; width: 50%; text-align: left; overflow: hidden')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Agents Impacted:
+						li(style='margin-bottom:4px;list-style-type: none;margin-left:0')
+							p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=agents_impacted + "/" + agents_total
+		hr(style='border-color: grey; display: block; margin-top: 18px; margin-bottom: 18px; margin-left: auto; margin-right: auto; border-style: solid none none none; border-width: 1px')
+
+
+		#messaging(style='overflow: hidden')
+			//- Conditionally show the Update/Summary and format it correctly if there is something in the update/summary input -//
+			if update && description
+				#update(style='overflow: hidden; border: 1px solid #999999; background-color: #EBEBEB; padding: 18px; margin-bottom: 9px')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;margin:0px;line-height: 100%; color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Latest Update: 
+						p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=update
+				#description(style='overflow: hidden; padding-top: 19px')
+					strong Original Issue: 
+					p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left; display: inline')=description
+				hr(style='border-color: grey; display: block; margin-top: 18px; margin-bottom: 18px; margin-left: auto; margin-right: auto; border-style: solid none none none; border-width: 1px')
+			if !update && description
+				#update(style='overflow: hidden; border: 1px solid #999999; background-color: #EBEBEB; padding: 18px; margin-bottom: 9px')
+					ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+						li(style='list-style-type: none;margin-left:0;margin-left:0')
+							h3(style='margin-bottom:0px;margin-top:0px;margin:0px;line-height: 100%; color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Issue: 
+						p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=description
+				hr(style='border-color: grey; display: block; margin-top: 18px; margin-bottom: 18px; margin-left: auto; margin-right: auto; border-style: solid none none none; border-width: 1px')
+
+		#timing(style='overflow: hidden; margin-bottom: 9px; width: 100%')
+			if start_time  
+				#left(style='overflow: hidden; float:left; width: 100%; text-align: left; overflow: hidden')
+					strong(style='color: #606060')="Start Time: "
+					p(style='display: inline; float: right; margin: 0px; color: #606060; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=start_time
+			if end_time
+				#right(style='overflow: hidden; float:left; width: 100%; text-align: left; overflow: hidden; padding-top: 5px')
+					strong(style='color: #606060')="End Time: "
+					p(style='display: inline; float: right; margin: 0px; color: #606060;  font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=end_time
+			if escalation_time
+				#firstreporttiming(style='overflow: hidden; margin-bottom: 9px; width: 100%; padding-top: 5px')
+					#left(style='overflow: hidden; float:left; width: 100%; text-align: left; overflow: hidden')
+						strong(style='color: #606060')="First Escalation Time: "
+						p(style='display: inline; float: right; margin: 0px; color: #606060;font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=escalation_time
+			hr(style='border-color: grey; display: block; margin-top: 18px; margin-bottom: 18px; margin-left: auto; margin-right: auto; border-style: solid none none none; border-width: 1px')
+
+		//- Show OA config file if present
+		if oa_config
+			#OA(style='overflow: hidden')
+				ul(style='width: 100%; padding: 0px; margin: 0px; text-align: left')
+					li(style='list-style-type: none;margin-left:0')
+						h3(style='margin-bottom:0px;margin-top:0px;margin:0px; line-height: 100%; color: #606060; display: block; font-family: Helvetica; font-size: 18px; font-style: normal; font-weight: bold; line-height: 125%; letter-spacing: -.5px; text-align: left') Outage Announcement: 
+					li(style='list-style-type: none;margin-left:0')
+						p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=oa_config
+				if oa_start_time
+					br
+					#left(style='overflow: hidden; float:left; width: 50%; text-align: left; overflow: hidden')
+						strong(style='color: #606060')="OA Activated: "
+						p(style='display: inline; margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=oa_start_time	 
+				if oa_end_time
+					#right(style='overflow: hidden; float:right; width: 50%; text-align: left; overflow: hidden')
+						strong(style='color: #606060')="OA Deactivated:"
+						p(style='display: inline; margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')=oa_end_time
+			hr(style='border-color: grey; display: block; margin-top: 18px; margin-bottom: 18px; margin-left: auto; margin-right: auto; border-style: solid none none none; border-width: 1px')
+
+		if kb_link
+			#kb(style='overflow: hidden; text-align: center; margin-top: 9px; margin-bottom: 18px')
+				a.button(href=kb_link style='border-radius: 10px; display: inline-block; border-spacing: 2px; color: #ffffff; text-align: center; font-family: Arial; font-size: 16px; font-weight: bold; letter-spacing: normal; padding-top: 16px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px; appearance: button; background-color: #999999; border: 1px solid #999999; text-decoration:none') KB Link
+		br
+		#ref(style='overflow: hidden')
+			p(style='margin: 0px; color: #606060; display: block; font-family: Helvetica; font-size: 15px; font-style: normal; line-height: 22.5px; text-align: left')
+				b="Ref: "+ id
+			br

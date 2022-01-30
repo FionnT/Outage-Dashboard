@@ -1,0 +1,67 @@
+#oa-wrapper
+  width: 65vw
+  max-width: 1200px
+  display: block
+  margin: 35px auto 0
+  height: auto
+  overflow: visible
+  h2
+    text-align: center
+  .clipboard
+    display: block
+    position: absolute
+    left: 59.5vw
+    top: 1vh
+    &.hidden
+      opacity: 0
+    &.visible
+      opacity: 1
+  .oa
+    width: 100%
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    .left
+      height: auto
+    .right
+      height: auto
+      p
+        text-align: center
+        overflow-wrap: break-word
+        word-wrap: break-word
+        hyphens: auto
+      button
+        margin: 15px auto 0
+        display: block
+      .warn
+        display: block
+        width: 100%
+        background: #d9534f
+        height: auto
+        padding: 10px
+        text-align: center
+        margin: 0 0 15px 0
+        color: white
+    .toggle
+      display: flex
+      align-items: center
+      justify-content: center
+      span
+        width: 50%
+      div
+        width: 50%
+        justify-content: baseline
+    .date
+      display: flex
+      justify-content: center
+      align-items: center
+      div
+        width: 45%
+        div
+          width: 100%
+  .left
+    width: 50%
+  .right
+    width: 50%
+    overflow: auto
+    margin-top: 0

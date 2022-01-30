@@ -1,0 +1,60 @@
+#outage-list
+  width: 75vw
+  display: block
+  margin: 35px auto 0
+  height: auto
+  overflow: visible
+  h2
+    text-align: center
+  #columns
+    .ui.input, .ui.fluid.dropdown
+      width: 95%
+      max-width: 95%
+      margin: 0 auto
+      text-align: center
+      input
+        width: 100%
+        margin-left: 2.5%
+        text-align: center
+    width: 100%
+    display: flex
+    &.actionable
+      cursor: pointer
+      padding: 15px 0 
+      transition: all  0.15s 
+      border-bottom: 1px solid lightgrey
+      &:hover
+        color: green
+        -webkit-box-shadow: 1px 0px 8px -4px rgba(0,0,0,0.52)
+        box-shadow: 1px 0px 8px -4px rgba(0,0,0,0.52)
+    p
+      cursor: pointer
+      display: inline
+      text-align: center
+      display: block
+    .ref
+      width: 7.5%
+      height: 25px
+    .status, .severity
+      width: 12.5%
+    .title
+      width: 40%
+      max-width: 40%
+    .desc
+      display: none
+    .start, .end
+      width: 15%
+      p 
+        padding-top: 10px
+      i
+        display: inline
+        float: right
+        margin-top: -32px
+        width: 15%
+        display: none
+      &.descending
+        i.down
+          display: block
+      &.ascending
+        i.up
+          display: block
