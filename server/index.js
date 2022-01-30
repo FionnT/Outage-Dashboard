@@ -4,7 +4,7 @@ const express = require("express"),
   serveIndex = require("serve-index")
 
 const app = express()
-
+const built = path.join(__dirname, "../built/")
 const updateOutage = require("./api/update-outage")
 const newOutage = require("./api/new-outage")
 const fetchOutage = require("./api/fetch-outage")
@@ -30,7 +30,7 @@ app.get("/api/status/", (req, res) => status(req, res))
 
 // Serves static files from the built/ directory
 // If a requested file isn't found, serves built/index.html
-app.use(serveIndex({ directory: path.join(__dirname, "../built/") }))
+app.use(serveIndex(built))
 
 const server = app.listen(7101, "localhost", function () {
   console.log(`Node ${process.version}`)

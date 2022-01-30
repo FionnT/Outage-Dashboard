@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { Icon, Input, Dropdown } from "semantic-ui-react"
+import { Icon, Input } from "semantic-ui-react"
 import "./styles.sass"
 
 export default function Navbar(props) {
